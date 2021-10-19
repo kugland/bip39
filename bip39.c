@@ -1,8 +1,8 @@
-#include <assert.h>
-#include <sodium.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+
+#include <sodium.h>
 
 #include "wordlist.cs.h"
 #include "wordlist.en.h"
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
   }
 
   size_t no_of_bits;
-  
+
   no_of_bits = atoi(argv[1]);
 
   switch (no_of_bits) {
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
 
   /* Realloc to fit the suffix. */
   entropy_bits = realloc(entropy_bits, TOTAL_BITS(no_of_bits) + 1);
- 
+
   /* Copy the suffix. */
   memcpy(entropy_bits + no_of_bits, hash_bits, SUFFIX_BITS(no_of_bits));
   entropy_bits[TOTAL_BITS(no_of_bits)] = '\0';
@@ -121,6 +121,13 @@ int main(int argc, char *argv[])
     printf("%s%c", wordlist[index], (i == NUM_WORDS(no_of_bits) - 1) ? '\n' : ' ');
   }
 
+  /* Overwrite generated data. */
+  memset(entropy, 0, BITS_TO_BYTES(no_of_bits));
+  memset(sha256_hash, 0, crypto_hash_sha256_BYTES);
+  memset(entropy_bits, 0, TOTAL_BITS(no_of_bits) + 1);
+  memset(hash_bits, 0, BYTES_TO_BITS(crypto_hash_sha256_BYTES));
+
+  /* Free the allocated memory. */
   free(entropy);
   free(entropy_bits);
   free(hash_bits);
