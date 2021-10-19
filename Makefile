@@ -29,7 +29,7 @@ bip39.1: bip39.1.ronn index.txt
 
 install: bip39 bip39.1 LICENSE README.md
 	cat bip39.1 | gzip > bip39.1.gz
-	install -o0 -g0 -Dm755 bip39 $(PREFIX)/bin/
-	install -o0 -g0 -Dm644 bip39.1.gz $(PREFIX)/share/man/man1/
-	install -o0 -g0 -Dm644 LICENSE $(PREFIX)/share/doc/bip39/
-	install -o0 -g0 -Dm644 README.md $(PREFIX)/share/doc/bip39/
+	install -o0 -g0 -m755 bip39 -d $(PREFIX)/bin
+	install -o0 -g0 -m644 bip39.1.gz -d $(PREFIX)/share/man/man1
+	install -o0 -g0 -m644 LICENSE -d $(PREFIX)/share/doc/bip39
+	install -o0 -g0 -m644 README.md -d $(PREFIX)/share/doc/bip39
