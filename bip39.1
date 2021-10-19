@@ -1,0 +1,28 @@
+.\" generated with Ronn-NG/v0.9.1
+.\" http://github.com/apjanke/ronn-ng/tree/0.9.1
+.TH "BIP39" "1" "October 2021" ""
+.SH "NAME"
+\fBbip39\fR \- Generate mnemonic codes according to BIP\-0039
+.SH "SYNOPSIS"
+\fBbip39\fR \fIBITS\fR [\fILANGUAGE\fR]
+.SH "DESCRIPTION"
+\fBbip39\fR generates a mnemonic code according to BIP\-0039 (“Mnemonic code for generating deterministic keys", M\. Palatinus, P\. Rusnak, A\. Voisine, and S\. Bowe)\.
+.P
+For a description of the algorithm, see BIP\-0039 \fIhttps://github\.com/bitcoin/bips/blob/master/bip\-0039\.mediawiki\fR\.
+.P
+This algorithm is \fInot\fR recommended for new wallets\. It was implemented here to generate mnemonic passwords for other uses\.
+.SH "OPTIONS"
+.TP
+\fIBITS\fR
+Number of bits in the mnemonic code\. (\fIrequired\fR)
+.IP
+Valid values are \fB128\fR, \fB160\fR, \fB192\fR, \fB224\fR, and \fB256\fR\.
+.TP
+\fILANG\fR
+Language of the mnemonic code\. (\fIoptional\fR)
+.IP
+Valid values are \fBen\fR (English), \fBes\fR (Spanish), \fBfr\fR (French), \fBit\fR (Italian), \fBja\fR (Japanese), \fBko\fR (Korean), \fBpt\fR (Portuguese), \fBzh_cn\fR (Chinese simplified), and \fBzh_tw\fR (Chinese traditional)\.
+.SH "COPYRIGHT & LICENSE"
+This software was written by André Kugland and is licensed under the MIT license\.
+.SH "SEE ALSO"
+pwgen(1)
