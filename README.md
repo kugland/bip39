@@ -1,6 +1,8 @@
 # bip39(1)
 **Generate mnemonic codes according to BIP-0039.**
 
+![AUR version](https://img.shields.io/aur/version/bip39-git)
+
 ### SYNOPSIS
 
   **`bip39`** **<var>`BITS`</var>** **`[`<var>`LANGUAGE`</var>`]`**
