@@ -33,7 +33,7 @@ char *to_binary(const void *data, size_t no_of_bits)
 }
 
 void help(void) {
-  (void) system("man 1 bip39");
+  int _ = system("man 1 bip39");
 }
 
 int main(int argc, char *argv[])
