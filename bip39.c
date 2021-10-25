@@ -33,7 +33,9 @@ char *to_binary(const void *data, size_t no_of_bits)
 }
 
 void help(void) {
-  int _ = system("man 1 bip39");
+  if (system("man 1 bip39") == -1) {
+    fprintf(stderr, "unable to show man page.");
+  }
 }
 
 int main(int argc, char *argv[])
