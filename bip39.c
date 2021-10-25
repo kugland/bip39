@@ -32,20 +32,14 @@ char *to_binary(const void *data, size_t no_of_bits)
   return bits;
 }
 
-const char *help_msg =
-  "Usage: bip39 <bits> [<language>]\n"
-  "\n"
-  "  Values for bits:\n"
-  "      128, 160, 192, 224, 256.\n"
-  "\n"
-  "  Values for language:  (default = en)\n"
-  "      cs, en, es, fr, it, ja,\n"
-  "      ko, pt, zh_cn, zh_tw\n";
+void help(void) {
+  system("man 1 bip39");
+}
 
 int main(int argc, char *argv[])
 {
   if (argc < 2 || argc > 3) {
-    printf("%s", help_msg);
+    help();
     return 1;
   }
 
@@ -60,7 +54,7 @@ int main(int argc, char *argv[])
     case 224:
     case 256: break;
     default:
-      printf("%s", help_msg);
+      help();
       return 1;
   }
 
@@ -89,7 +83,7 @@ int main(int argc, char *argv[])
     } else if (strcmp(language, "zh_cn") == 0) {
       wordlist = wordlists_chinese_simplified;
     } else {
-      printf("%s", help_msg);
+      help();
       return 1;
     }
   }

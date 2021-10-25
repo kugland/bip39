@@ -20,14 +20,14 @@ here to generate mnemonic passwords for other uses.
 
   * <BITS>:
     Number of bits in the mnemonic code. (_required_)
-    
+
     Valid values are `128`, `160`, `192`, `224`, and `256`.
 
   * <LANG>:
-    Language of the mnemonic code. (_optional_)
-    
-    Valid values are `en` (English), `es` (Spanish), `fr` (French), `it`
-    (Italian), `ja` (Japanese), `ko` (Korean), `pt` (Portuguese), `zh_cn`
+    Language of the mnemonic code. (_optional_, default: `en`)
+
+    Valid values are `cs` (Czech), `en` (English), `es` (Spanish), `fr` (French),
+    `it` (Italian), `ja` (Japanese), `ko` (Korean), `pt` (Portuguese), `zh_cn`
     (Chinese simplified), and `zh_tw` (Chinese traditional).
 
 ## COPYRIGHT & LICENSE
