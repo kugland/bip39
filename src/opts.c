@@ -31,7 +31,7 @@ SOFTWARE.
 #include <unistd.h>
 
 const char *help_message
-    = "bip39 - A command-line tool to generate BIP0039 mnemonic phrases.\n"
+    = "bip39 - A command-line tool to generate BIP-0039 mnemonic phrases.\n"
       "\n"
       "USAGE\n"
       "    bip39 [OPTIONS]\n"

@@ -1,11 +1,11 @@
 # bip39
 
-A command-line tool to generate BIP0039[^BIP0039] mnemonic phrases.
+A command-line tool to generate BIP-0039[^BIP0039] mnemonic phrases.
 
-[^BIP0039]: BIP0039 is a proposed standard for generating mnemonic phrases from
+[^BIP0039]: BIP-0039 is a proposed standard for generating mnemonic phrases from
 a random number to create deterministic keys for wallets. *The standard was
 never approved though, so its use is **not** recommended for new wallets*, even
-though many wallets still support it. [BIP0039: “Mnemonic code for generating
+though many wallets still support it. [BIP-0039: “Mnemonic code for generating
 deterministic keys”, M. Palatinus, P. Rusnak, A. Voisine, and S. Bowe](
 https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki).
 
