@@ -1,0 +1,41 @@
+---
+Language: Cpp
+BasedOnStyle: WebKit
+
+#AlignArrayOfStructures: Left
+#AlignConsecutiveAssignments: Consecutive
+#AlignConsecutiveDeclarations: Consecutive
+AlignAfterOpenBracket: Align
+AlignEscapedNewlines: Left
+AlignOperands: AlignAfterOperator
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortEnumsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakAfterReturnType: AllDefinitions
+AlwaysBreakBeforeMultilineStrings: true
+BreakBeforeBinaryOperators: All
+BreakStringLiterals: true
+ColumnLimit: 80
+Cpp11BracedListStyle: false
+IncludeBlocks: Regroup
+IncludeCategories:
+  # First local includes
+    - Regex: '".*"'
+      Priority: 0
+  # Second standard C headers
+    - Regex: ^<(assert|complex|ctype|errno|fenv|float|inttypes|iso646|limits|locale|math|setjmp|signal|std(align|arg|atomic|bit|bool|ckdint|def|int|io|lib|noreturn)|string|tgmath|threads|time|uchar|wchar|wctype)[.]h>$
+      Priority: 1
+      SortPriority: 1
+  # Third POSIX headers
+    - Regex: ^<(aio|arpa/inet|cpio|dirent|dlfcn|endian|fcntl|fmtmsg|fnmatch|ftw|glob|grp|iconv|langinfo|libgen|monetary|mqueue|ndbm|net/if|netdb|netinet/(in|tcp)|nl_types|poll|pthread|pwd|regex|sched|search|semaphore|spawn|strings|stropts|sys/(ipc|mman|msg|resource|select|sem|shm|socket|stat|statvfs|time|times|types|uio|un|utsname|wait)|syslog|tar|termios|trace|ulimit|unistd|utime|utmpx|wordexp).h>$
+      Priority: 1
+      SortPriority: 2
+  # Fourth other <> headers
+    - Regex: ^<.*>$
+      Priority: 1
+      SortPriority: 3
+IndentWidth: 4
+PointerAlignment: Right
+ReflowComments: true

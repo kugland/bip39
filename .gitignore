@@ -1,0 +1,6 @@
+*.o
+a.out
+tests.out
+bip39
+/result
+/build
