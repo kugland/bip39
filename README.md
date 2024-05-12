@@ -9,14 +9,6 @@ though many wallets still support it. [BIP0039: “Mnemonic code for generating
 deterministic keys”, M. Palatinus, P. Rusnak, A. Voisine, and S. Bowe](
 https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki).
 
-## Building and installing
-
-```bash
-meson setup build
-ninja -C build
-ninja -C build install
-```
-
 ## Usage
 
 `bip39 [OPTIONS]`
@@ -44,6 +36,40 @@ ninja -C build install
 
   * **-V**:
     Show version information and exit.
+
+## Installation
+
+### On Arch Linux
+
+On Arch Linux, you can install [`bip39-git`](https://aur.archlinux.org/packages/bip39-git)
+from the AUR.
+
+### On NixOS
+
+On NixOS, this project is available from the [NUR](https://github.com/nix-community/NUR):
+
+```nix
+{config}: {
+    environment.systemPackages = [config.nur.repos.kugland.bip39];
+}
+```
+
+### On Other Systems
+
+On other systems, you can build and install the project using [Meson](https://mesonbuild.com/)
+and [Ninja](https://github.com/ninja-build/ninja). After cloning the repository, and installing
+the dependencies, run the following commands:
+
+```bash
+meson setup build
+ninja -C build
+ninja -C build install
+```
+
+### Dependencies
+
+* [libsodium](https://libsodium.org/)
+* [CUnit](https://cunit.sourceforge.net/) (for tests)
 
 ## Copyright & License
 
