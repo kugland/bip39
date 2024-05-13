@@ -1,4 +1,6 @@
-all:
+all: build test
+
+build: .PHONY
 	meson setup build
 	ninja -C build
 
@@ -13,3 +15,5 @@ format:
 
 mkwordlists:
 	./mkwordlists.pl
+
+.PHONY:
