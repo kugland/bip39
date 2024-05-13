@@ -49,14 +49,11 @@ main(int argc, char *argv[])
     if (print_mnemonic(opts.lang, opts.numbered, mnemonic) != 0)
         goto failure;
 
-    /*if (write(STDOUT_FILENO, mnemonic, strlen(mnemonic)) == -1)
-        goto failure;*/
-
-    free(mnemonic);
-
+    sodium_free(mnemonic);
     return EXIT_SUCCESS;
 
 failure:
+    sodium_free(mnemonic);
     perror(PROJECT_NAME);
     return EXIT_FAILURE;
 }

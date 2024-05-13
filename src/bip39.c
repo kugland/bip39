@@ -48,11 +48,11 @@ bip39_mnemonic(size_t ent_bits, const char *lang, const uint8_t *ent)
     const char *words[2048] = { 0 };
     if (!wordlist_get_index(lang, words))
         return NULL;
-    uint8_t *entcs = calloc(1, entcs_bytes);
-    const char **mnemonic = calloc(1, (mnemonic_len + 1) * sizeof(char *));
+    uint8_t *entcs = sodium_malloc(entcs_bytes);
+    const char **mnemonic = sodium_allocarray(mnemonic_len + 1, sizeof(char *));
     if (entcs == NULL || mnemonic == NULL) {
-        free(entcs);
-        free(mnemonic);
+        sodium_free(entcs);
+        sodium_free(mnemonic);
         return NULL;
     }
 
@@ -79,10 +79,9 @@ bip39_mnemonic(size_t ent_bits, const char *lang, const uint8_t *ent)
     }
 
     /* Zero out sensitive data and free memory */
-    memset(hash, 0, crypto_hash_sha256_BYTES);
-    memset(&cs, 0, sizeof(cs));
-    memset(entcs, 0, entcs_bytes);
-    free(entcs);
+    sodium_memzero(hash, crypto_hash_sha256_BYTES);
+    sodium_memzero(&cs, sizeof(cs));
+    sodium_free(entcs);
 
     return mnemonic;
 }

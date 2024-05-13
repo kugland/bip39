@@ -17,7 +17,7 @@
             do {                                                       \
                 CU_ASSERT_STRING_EQUAL(mnemonic[i], expect[i]);        \
             } while (expect[++i] != NULL);                             \
-            free(mnemonic);                                            \
+            sodium_free(mnemonic);                                     \
         }                                                              \
     }
 

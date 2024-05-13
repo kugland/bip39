@@ -26,6 +26,7 @@ SOFTWARE.
 #include <stdbool.h>
 #include <string.h>
 #include <unistd.h>
+#include <sodium.h>
 
 static const char nums[24][5]
     = { " 1. ", " 2. ", " 3. ", " 4. ", " 5. ", " 6. ", " 7. ", " 8. ",
@@ -62,7 +63,7 @@ print_mnemonic(const char *lang, bool numbered, const char **mnemonic)
         /* Print the word */
         if (write(STDOUT_FILENO, mnemonic[i], strlen(mnemonic[i])) == -1)
             return 1;
-        mnemonic[i] = NULL; /* Zero out the mnemonic */
+        sodium_memzero(&mnemonic[i], sizeof(mnemonic[i]));
     }
     if (write(STDOUT_FILENO, "\n", 1) == -1) /* Final newline */
         return -1;
