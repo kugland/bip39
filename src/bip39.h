@@ -45,7 +45,7 @@ SOFTWARE.
             occurred. The caller is responsible for freeing the memory.
 
 */
-const char **bip39_mnemonic(size_t ent_bits, const char *lang,
-                            const uint8_t *ent);
+const char **bip39_phrase(size_t ent_bits, const char *lang,
+                          const uint8_t *ent);
 
 #endif /* BIP39_BIP39_H */

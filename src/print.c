@@ -40,14 +40,14 @@ static const char nums_cjk[24][10]
         "１９　", "２０　", "２１　", "２２　", "２３　", "２４　" };
 
 int
-print_mnemonic(const char *lang, bool numbered, const char **mnemonic)
+print_phrase(const char *lang, bool numbered, const char **phrase)
 {
     errno = 0;
 
     bool cjk = strcmp(lang, "ja") == 0 || strcmp(lang, "ko") == 0
             || strcmp(lang, "zh_cn") == 0 || strcmp(lang, "zh_tw") == 0;
 
-    for (int i = 0; mnemonic[i]; i++) {
+    for (int i = 0; phrase[i]; i++) {
         if (i > 0) {
             /* Add a space between words */
             const char *pre = numbered ? "\n" : (cjk ? "　" : " ");
@@ -61,9 +61,9 @@ print_mnemonic(const char *lang, bool numbered, const char **mnemonic)
                 return -1;
         }
         /* Print the word */
-        if (write(STDOUT_FILENO, mnemonic[i], strlen(mnemonic[i])) == -1)
+        if (write(STDOUT_FILENO, phrase[i], strlen(phrase[i])) == -1)
             return 1;
-        sodium_memzero(&mnemonic[i], sizeof(mnemonic[i]));
+        sodium_memzero(&phrase[i], sizeof(phrase[i]));
     }
     if (write(STDOUT_FILENO, "\n", 1) == -1) /* Final newline */
         return -1;

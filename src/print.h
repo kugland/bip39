@@ -33,11 +33,11 @@ SOFTWARE.
 
     @param lang     The language of the mnemonic phrase
     @param numbered Whether to number the words in the mnemonic phrase
-    @param mnemonic Pointers to the words of the mnemonic phrase
+    @param phrase   Pointers to the words of the mnemonic phrase
 
     @return 0 on success, -1 on error
 
 */
-int print_mnemonic(const char *lang, bool numbered, const char **mnemonic);
+int print_phrase(const char *lang, bool numbered, const char **phrase);
 
 #endif /* BIPS39_PRINT_H */

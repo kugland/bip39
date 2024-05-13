@@ -35,13 +35,13 @@ SOFTWARE.
 #include <sodium.h>
 
 const char **
-bip39_mnemonic(size_t ent_bits, const char *lang, const uint8_t *ent)
+bip39_phrase(size_t ent_bits, const char *lang, const uint8_t *ent)
 {
     const int ent_bytes = ent_bits >> 3;
     const int cs_bits = ent_bits >> 5;
     const int entcs_bits = ent_bits + cs_bits;
     const int entcs_bytes = (entcs_bits + 7) >> 3;
-    const int mnemonic_len = entcs_bits / 11;
+    const int phrase_len = entcs_bits / 11;
 
     /* Allocate all the memory we need, so we can fail fast in case of
        allocation failure */
@@ -49,10 +49,10 @@ bip39_mnemonic(size_t ent_bits, const char *lang, const uint8_t *ent)
     if (!wordlist_get_index(lang, words))
         return NULL;
     uint8_t *entcs = sodium_malloc(entcs_bytes);
-    const char **mnemonic = sodium_allocarray(mnemonic_len + 1, sizeof(char *));
-    if (entcs == NULL || mnemonic == NULL) {
+    const char **phrase = sodium_allocarray(phrase_len + 1, sizeof(char *));
+    if (entcs == NULL || phrase == NULL) {
         sodium_free(entcs);
-        sodium_free(mnemonic);
+        sodium_free(phrase);
         return NULL;
     }
 
@@ -72,16 +72,16 @@ bip39_mnemonic(size_t ent_bits, const char *lang, const uint8_t *ent)
     bits_set(ent_bits, cs_bits, entcs, cs);
 
     /* Build the mnemonic phrase */
-    for (int i = 0; i < mnemonic_len; i++) {
+    for (int i = 0; i < phrase_len; i++) {
         uintmax_t idx = bits_get(i * 11, 11, entcs);
-        mnemonic[i] = words[idx];
+        phrase[i] = words[idx];
     }
-    mnemonic[mnemonic_len] = NULL;
+    phrase[phrase_len] = NULL;
 
     /* Zero out sensitive data and free memory */
     sodium_memzero(hash, crypto_hash_sha256_BYTES);
     sodium_memzero(&cs, sizeof(cs));
     sodium_free(entcs);
 
-    return mnemonic;
+    return phrase;
 }

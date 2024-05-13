@@ -33,7 +33,7 @@ SOFTWARE.
 
 /** @brief Command line options. */
 typedef struct {
-    int bits;      /**< Number of bits in the mnemonic seed. */
+    int bits;      /**< Number of entropy bits. */
     char *lang;    /**< Language of the wordlist to use. */
     bool numbered; /**< Whether the words are numbered */
 } opts_t;

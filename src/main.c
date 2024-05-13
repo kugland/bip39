@@ -40,20 +40,20 @@ main(int argc, char *argv[])
         return 1;
 
     opts_t opts;
+    const char **phrase = NULL;
 
     opts_from_cmdline(argc, argv, &opts);
 
-    const char **mnemonic;
-    if ((mnemonic = bip39_mnemonic(opts.bits, opts.lang, NULL)) == NULL)
+    if ((phrase = bip39_phrase(opts.bits, opts.lang, NULL)) == NULL)
         goto failure;
-    if (print_mnemonic(opts.lang, opts.numbered, mnemonic) != 0)
+    if (print_phrase(opts.lang, opts.numbered, phrase) != 0)
         goto failure;
 
-    sodium_free(mnemonic);
+    sodium_free(phrase);
     return EXIT_SUCCESS;
 
 failure:
-    sodium_free(mnemonic);
+    sodium_free(phrase);
     perror(PROJECT_NAME);
     return EXIT_FAILURE;
 }

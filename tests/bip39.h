@@ -10,14 +10,14 @@
         const char *expect[] = { __VA_ARGS__, NULL };                  \
         uint8_t entropy[bits / 8];                                     \
         for (unsigned i = 0; i < sizeof(entropy); i++) entropy[i] = i; \
-        const char **mnemonic = bip39_mnemonic(bits, lang, entropy);   \
-        CU_ASSERT_PTR_NOT_NULL(mnemonic);                              \
-        if (mnemonic != NULL) {                                        \
+        const char **phrase = bip39_phrase(bits, lang, entropy);       \
+        CU_ASSERT_PTR_NOT_NULL(phrase);                                \
+        if (phrase != NULL) {                                          \
             unsigned i = 0;                                            \
             do {                                                       \
-                CU_ASSERT_STRING_EQUAL(mnemonic[i], expect[i]);        \
+                CU_ASSERT_STRING_EQUAL(phrase[i], expect[i]);          \
             } while (expect[++i] != NULL);                             \
-            sodium_free(mnemonic);                                     \
+            sodium_free(phrase);                                       \
         }                                                              \
     }
 
