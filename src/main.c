@@ -31,7 +31,9 @@ SOFTWARE.
 #include <unistd.h>
 #include <sodium.h>
 
-#ifndef CUNIT_TESTING /* main() shouldn't be compiled if testing with CUnit */
+#ifdef CUNIT_TESTING /* main() shouldn't be compiled if testing with CUnit */
+__attribute__((weak))
+#endif
 
 int
 main(int argc, char *argv[])
@@ -54,8 +56,6 @@ main(int argc, char *argv[])
 
 failure:
     sodium_free(phrase);
-    perror(PROJECT_NAME);
+    perror("bip39");
     return EXIT_FAILURE;
 }
-
-#endif

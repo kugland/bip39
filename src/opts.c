@@ -37,10 +37,10 @@ const char *help_message
       "    bip39 [OPTIONS]\n"
       "\n"
       "OPTIONS\n"
-      "    -b BITS   Number of bits in the mnemonic code. Default is 128.\n"
+      "    -b BITS   Number of entropy bits.  Default: 128.\n"
       "              Valid values are 128, 160, 192, 224, and 256.\n"
       "\n"
-      "    -l LANG   Language of the mnemonic words. Default is 'en'.\n"
+      "    -l LANG   Language of the word list.  Default: 'en'.\n"
       "              Valid values are 'cs' (Czech), 'en' (English),\n"
       "              'es' (Spanish), 'fr' (French), 'it' (Italian),\n"
       "              'ja' (Japanese), 'ko' (Korean), 'pt' (Portuguese),\n"
@@ -54,8 +54,8 @@ const char *help_message
       "    -V        Show version information and exit.\n"
       "\n"
       "COPYRIGHT & LICENSE\n"
-      "    This project was written by André Kugland, and is released under\n"
-      "    the MIT License -- see the accompanying LICENSE file for more\n"
+      "    Copyright (c) 2021-2024 Andre Kugland.  Released under the\n"
+      "    MIT License -- see the accompanying LICENSE file for more\n"
       "    information.\n";
 
 static const char valid_bits[6][4] = { "128", "160", "192", "224", "256", "" };
@@ -101,7 +101,7 @@ opts_from_cmdline(int argc, char *argv[], opts_t *opts)
         }
     }
     if (optind < argc) {
-        fprintf(stderr, "%s: unexpected argument -- '%s'.\n", PROJECT_NAME,
+        fprintf(stderr, "%s: unexpected argument -- '%s'.\n", "bip39",
                 argv[optind]);
         goto usage;
     }
@@ -110,9 +110,9 @@ opts_from_cmdline(int argc, char *argv[], opts_t *opts)
 
 invalid:
     fprintf(stderr, "%s: invalid argument for option '%c' -- '%s'.\n",
-            PROJECT_NAME, opt, optarg);
+            "bip39", opt, optarg);
 
 usage:
-    fprintf(stderr, "Try '%s -h' for more information.\n", PROJECT_NAME);
+    fprintf(stderr, "Try '%s -h' for more information.\n", "bip39");
     exit(EXIT_FAILURE);
 }
