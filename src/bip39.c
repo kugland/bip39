@@ -75,8 +75,8 @@ bip39_mnemonic(size_t ent_bits, const char *lang, const uint8_t *ent)
     for (int i = 0; i < mnemonic_len; i++) {
         uintmax_t idx = bits_get(i * 11, 11, entcs);
         mnemonic[i] = words[idx];
-        mnemonic[i + 1] = NULL;
     }
+    mnemonic[mnemonic_len] = NULL;
 
     /* Zero out sensitive data and free memory */
     sodium_memzero(hash, crypto_hash_sha256_BYTES);
